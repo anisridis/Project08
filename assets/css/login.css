@@ -1,110 +1,159 @@
 *{
-    margin: 0;
     padding: 0;
-    font-family: 'poppins', sans-serif;
+    margin: 0;
     box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+:root{
+    --grey: #F4F2FF;
+    --darkgrey: #B7B7B7;
+
+    --green: #23AE00;
+    --light-green: #BDFFAC;
+
+    --red: #FE2727;
+    --light-red: #FFD2D2;
+
+    --blue: #277FFE;
+    --light-blue: #B6C6FF;
+     --dark-blue: #1368E3;
+
+     --bs: #AECFFF;
+     --text: #9B9B9B;
+}
+
+a{
+    color: var(--blue);
+    transition: all ease 0.3s;
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--dark-blue);
+}
+
+body{
+    background: var(--light-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0 16px;  
 }
 
 .container{
-   width: 100%;
-   height: 100vh;
-   background-image: linear-gradient(rgba(0,0,50,0.8),rgba(0,0,50,0.8)), url(/assets/images/background.webp);
-   background-position: center;
-   background-size: cover;
-   position: relative;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
 }
 
-.form-box{
-    width: 90%;
-    max-width: 450px;
+form{
+    width: 100%;
+    padding: 28px;
+    border-radius: 12px;
+    background: #fff;
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background: #fff;
-    padding: 50px 60px 70px;
-    text-align: center;
+    transform: translateY(-50%) scale(.8);
+    opacity: 1;
+    z-index: 100;
+    transition: all ease 0.3s;
+    transition-delay: 0s;
+    
 
 }
 
-.form-box h1{
-    font-size: 30px;
-    margin-bottom: 60px;
-    color: #3c00a0;
-    position: relative;
+form.active{
+    transform: translateY(-50%);
+    opacity: 1;
+    z-index: 200;
+    transition-delay: .3s;
 
 }
 
-.form-box h1::after{
-    content: ' ';
-    width: 30px;
-    height: 4px;
-    border-radius: 3px;
-    background: #3c00a0;
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
+.title{
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
 }
 
-.input-field{
-    background: #eaeaea;
-    margin: 15px 0;
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    max-height: 65px;
-    transition: max-height 0.5s;
-    overflow: hidden;
-
-}
-input{
-    width: 100%;
-    background: transparent;
-    border: 0;
-    outline: 0;
-    padding: 18px 15px;
+.form-group{
+    margin-bottom: 14px;
 }
 
-.input-field i{
-    margin-left: 15px;
-    color: #999;
-}
-
-form p{
-    text-align: left;
-    font-size: 13px;
-}
-
-form p a{
-    text-decoration: none;
-    color: #3c00a0;
-}
-
-.btn-field{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.btn-field button{
-    flex-basis: 48%;
-    background: #3c00a0;
-    color: #fff;
-    height: 40px;
-    border-radius: 20px;
-    border: 0;
-    outline: 0;
-    cursor: pointer;
-    transition: background 1s;
+.form-group label{
+    display: inline-block;
+    margin-bottom: 4px;
 }
 
 .input-group{
-    height: 280px;
+    width: 100%;
+    position: relative;
+}
+.input-group input{
+    padding: 12px 40px 12px 20px;
+    outline: none;
+    border-radius: 6px;
+    border: 1px solid var(--darkgrey);
+    width: 100%;
+    transition: all ease 0.3s;
 }
 
-.btn-field button.disable{
-    background: #eaeaea;
-    color: #555;
+/*validation*/
+.input-group input:focus,
+.input-group input:not(:placeholder-shown) {
+    border-color: var(--blue);
+    background: var(--grey);
 }
 
+.input-group input:focus + i,
+.input-group input:not(:placeholder-shown) + i{
+    color: var(--blue);
+}
+
+.input-group input:focus {
+    box-shadow: 0 0 0 4px var(--bs);
+}
+
+.input-group input:focus:valid{
+    box-shadow: 0 0 0 4px var(--light-green);
+}
+
+.input-group input:focus:invalid{
+    box-shadow: 0 0 0 4px var(--light-red);
+}
+/*validation*/
+
+.input-group i{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    color: var(--text);
+    pointer-events: none;
+    transition: all ease 0.3s;
+}
+
+.form-group .help-text{
+    font-size: 12px;
+    color: var(--text);
+}
+
+.btn-submit{
+    padding: 12px;
+    display: block;
+    width: 100%;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all ease 0.3s;
+    border: none;
+    font-weight: 500;
+    background: var(--blue);
+    margin-bottom: 20px;
+}
+
+.btn-submit:hover{
+    color: var(--dark-blue);
+}
